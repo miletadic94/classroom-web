@@ -8,8 +8,13 @@ import {
 } from "../../services/localStorageService";
 
 import alertReducer from "./alertReducer";
+import currentUserReducer from "./currentUserReducer";
+import { studentsReducer, studentReducer } from "./studentReducers";
 
 const appReducer = combineReducers({
+  currentUser: currentUserReducer,
+  students: studentsReducer,
+  student: studentReducer,
   alert: alertReducer,
   form: formReducer,
 });

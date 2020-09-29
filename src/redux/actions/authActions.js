@@ -1,16 +1,20 @@
 import axios, { BASE_URL } from "../../utils/axios";
 import { SET_ALERT } from "./alertActions";
 import { history } from "../../store";
-import { setUserId, setUserToken } from "../../services/localStorageService";
+import {
+  setUserId,
+  setUserToken,
+  setUserRole,
+} from "../../services/localStorageService";
 
-export const loginAction = (payload) => {
+export const loginAction = (data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/login`, JSON.stringify(payload))
+      .post(`${BASE_URL}/login`, JSON.stringify(data))
       .then((response) => {
-        //setUserId(data.user.id);
-      //  setUserToken(data.token);
-      console.log("Response log: ", response);
+        setUserId(data.user.id);
+        setUserToken(data.token);
+        setUserRole(data.userRole);
         history.push("/");
       })
       .catch((error) => {

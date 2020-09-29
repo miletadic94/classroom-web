@@ -42,9 +42,6 @@ const App = () => {
         <Route path="/reset-password/:tokenId" component={ResetPassword} />
         <AuthRoute path="/" component={Home} exact />
         <AuthRoute path="/user-profile" component={UserProfile} />
-        {/* <AuthRoute path="/profesor/users" component={UserManagement} exact />
-        <AuthRoute path="/profesor/users/create" component={CreateUser} />
-        <AuthRoute path="/profesor/users/edit/:id" component={EditUser} /> */}
       </Switch>
       <Alert />
     </Router>
