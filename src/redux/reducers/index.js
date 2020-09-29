@@ -10,11 +10,20 @@ import {
 import alertReducer from "./alertReducer";
 import currentUserReducer from "./currentUserReducer";
 import { studentsReducer, studentReducer } from "./studentReducers";
+import { booksReducer, bookReducer } from "./bookReducers";
+import { notesReducer, noteReducer } from "./noteReducers";
+import { notebooksReducer, notebookReducer } from "./notebookReducers";
 
 const appReducer = combineReducers({
   currentUser: currentUserReducer,
   students: studentsReducer,
   student: studentReducer,
+  books: booksReducer,
+  book: bookReducer,
+  notes: notesReducer,
+  note: noteReducer,
+  notebook: notebookReducer,
+  notebooks: notebooksReducer,
   alert: alertReducer,
   form: formReducer,
 });
