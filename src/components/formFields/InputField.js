@@ -10,9 +10,9 @@ const InputField = ({
   meta: { error, warning, touched },
 }) => {
   return (
-    <div>
-      <label>{label}</label>
-      <input {...input} name={name} type={type} placeholder={placeholder} />
+
+    <div class="form-group">
+      <input {...input} name={name} type={type} placeholder={placeholder}  class="form-control form-control-user"/>
       {touched && error && (
         <Label basic color="red" pointing>
           {error}

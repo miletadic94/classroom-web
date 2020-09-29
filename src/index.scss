@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.root {
+  min-height: 100vh;
+}
+
+.bg-login-image {
+  background: url("https://robots.net/wp-content/uploads/2019/09/blur-codes-coding-577585.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 80vh;
+}
+
+.bg-register-image {
+  background: url("https://s1.1zoom.me/b5959/440/School_Gray_background_Little_girls_Book_Glasses_553852_600x800.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-password-image {
+  background: url("https://media.wired.com/photos/5be4cd03db23f3775e466767/125:94/w_600,h_800,c_limit/books-521812297");
+  background-position: center;
+  background-size: cover;
+}

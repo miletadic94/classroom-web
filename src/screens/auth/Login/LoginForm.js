@@ -1,7 +1,8 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import { Checkbox, Form } from "semantic-ui-react";
 import InputField from "../../../components/formFields/InputField";
+import Button from "../../../components/Button";
 import {
   required,
   emailValidation,
@@ -10,28 +11,25 @@ import {
   maxLength128,
 } from "../../../utils/validations";
 
-const Login = ({ handleSubmit, onSubmit }) => {
+const Login = ({ handleSubmit, onSubmit, ...props }) => {
   return (
-    <form
-      style={{ width: "100%" }}
-      className="ui form"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+
+    <form class="user" onSubmit={handleSubmit(onSubmit)}>
       <Field
-        name="email"
-        type="email"
-        label="Please Enter Your Email"
+        name="username"
+        type="text"
+        placeholder="Please Enter Your Username"
         component={InputField}
         validate={[required]}
       />
       <Field
         name="password"
         type="password"
-        label="Please Enter Your Password"
+        placeholder="Please Enter Your Password"
         component={InputField}
         validate={[required]}
       />
-      <Button type="submit">Submit</Button>
+      <Button type="submit" label="Login"/>
     </form>
   );
 };

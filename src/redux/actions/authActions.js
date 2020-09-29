@@ -6,10 +6,11 @@ import { setUserId, setUserToken } from "../../services/localStorageService";
 export const loginAction = (payload) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/login`, payload)
-      .then(({ data }) => {
-        setUserId(data.user.id);
-        setUserToken(data.token);
+      .post(`${BASE_URL}/login`, JSON.stringify(payload))
+      .then((response) => {
+        //setUserId(data.user.id);
+      //  setUserToken(data.token);
+      console.log("Response log: ", response);
         history.push("/");
       })
       .catch((error) => {
