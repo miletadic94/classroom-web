@@ -1,14 +1,16 @@
 import { isStudent } from "../../services/localStorageService";
 import axios, { BASE_URL } from "../../utils/axios";
 import { SET_ALERT } from "./alertActions";
+import { getUserId } from "../../services/localStorageService";
 
 export const GET_CURRENT_USER = "@USR/GET_CURRENT_USER";
 
-export const getCurrentUserAction = (id) => {
+export const getCurrentUserAction = () => {
   return (dispatch) => {
-    const PATH = isStudent ? "/student" : "/professor";
+    const PATH = isStudent() ? "student" : "professor";
+    const userId = getUserId();
     axios
-      .get(`${BASE_URL}/${PATH}/${id}`)
+      .get(`${BASE_URL}/${PATH}/${userId}`)
       .then((response) => {
         dispatch({
           type: GET_CURRENT_USER,

@@ -11,8 +11,8 @@ export const loginAction = (data) => {
   return (dispatch) => {
     axios
       .post(`${BASE_URL}/login`, JSON.stringify(data))
-      .then((response) => {
-        setUserId(data.user.id);
+      .then(({ data }) => {
+        setUserId(data.userId);
         setUserToken(data.token);
         setUserRole(data.userRole);
         history.push("/");

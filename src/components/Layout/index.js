@@ -11,7 +11,7 @@ const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
 
   if (!currentUser) return null;
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
         ClassRoom
       </a>
@@ -29,19 +29,21 @@ const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <Link class="nav-link" to="/">
               Home
             </Link>
           </li>
           <li class="nav-item">
-            <Link to="/my-courses">My Courses</Link>
+            <Link class="nav-link" to="/my-courses">
+              My Courses
+            </Link>
           </li>
         </ul>
         <div className="position-relative mr-5">
-          <a
+          <span
+            style={{ color: "white" }}
             class="nav-link dropdown-toggle"
-            href="#"
             id="navbarDropdown"
             role="button"
             data-toggle="dropdown"
@@ -49,7 +51,7 @@ const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
             aria-expanded="false"
           >
             {currentUser.name} {currentUser.surname}
-          </a>
+          </span>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <Link to="/user-profile" class="dropdown-item" href="#">
               My Profile

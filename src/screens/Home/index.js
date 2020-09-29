@@ -28,9 +28,6 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <span class="info">
-          First letter of the subject should be always uppercase!
-        </span>
       </form>
     </div>
   );
