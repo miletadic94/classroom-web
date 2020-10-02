@@ -25,11 +25,6 @@ const Login = ({ loginAction }) => {
                     <hr />
                     <LoginForm onSubmit={handleSubmit} />
                     <div class="text-center">
-                      <Link class="small" to="/forgot-password">
-                        Forgot Password?
-                      </Link>
-                    </div>
-                    <div class="text-center">
                       <Link class="small" to="/register">
                         Create an Account!
                       </Link>

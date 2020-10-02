@@ -9,7 +9,7 @@ const PATH = "/note";
 export const getNotesAction = () => {
   return (dispatch) => {
     axios
-      .get(`${BASE_URL}/${PATH}`)
+      .get(`${BASE_URL}${PATH}`)
       .then((response) => {
         dispatch({
           type: GET_NOTES,
@@ -35,7 +35,7 @@ export const getNotesAction = () => {
 export const getNoteAction = (id) => {
   return (dispatch) => {
     axios
-      .get(`${BASE_URL}/${PATH}/${id}`)
+      .get(`${BASE_URL}${PATH}/${id}`)
       .then((response) => {
         dispatch({
           type: GET_NOTE,
@@ -61,7 +61,7 @@ export const getNoteAction = (id) => {
 export const createNoteAction = (data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/${PATH}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,
@@ -86,7 +86,7 @@ export const createNoteAction = (data) => {
 export const updateNoteAction = (id, data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/${PATH}/${id}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,

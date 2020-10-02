@@ -11,9 +11,8 @@ import {
   maxLength128,
 } from "../../../utils/validations";
 
-const Login = ({ handleSubmit, onSubmit, ...props }) => {
+const LoginForm = ({ handleSubmit, onSubmit, ...props }) => {
   return (
-
     <form class="user" onSubmit={handleSubmit(onSubmit)}>
       <Field
         name="username"
@@ -29,9 +28,9 @@ const Login = ({ handleSubmit, onSubmit, ...props }) => {
         component={InputField}
         validate={[required]}
       />
-      <Button type="submit" label="Login"/>
+      <Button type="submit" label="Login" />
     </form>
   );
 };
 
-export default reduxForm({ form: "loginForm" })(Login);
+export default reduxForm({ form: "loginForm" })(LoginForm);

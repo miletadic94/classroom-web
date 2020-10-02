@@ -8,6 +8,11 @@ export const getUserId = () => localStorage.getItem(USER_ID);
 export const setUserId = (id) => localStorage.setItem(USER_ID, id);
 export const deleteUserId = () => localStorage.removeItem(USER_ID);
 
+const USER_ROLE_ID = "classroom_user_role_id";
+export const getRoleId = () => localStorage.getItem(USER_ROLE_ID);
+export const setRoleId = (roleId) => localStorage.setItem(USER_ROLE_ID, roleId);
+export const deleteRoleId = () => localStorage.removeItem(USER_ROLE_ID);
+
 const USER_ROLE = "classroom_user_role";
 export const isStudent = () => localStorage.getItem(USER_ROLE) === "S";
 export const setUserRole = (role) => localStorage.setItem(USER_ROLE, role);

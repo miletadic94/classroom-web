@@ -1,14 +1,14 @@
 import { isStudent } from "../../services/localStorageService";
 import axios, { BASE_URL } from "../../utils/axios";
 import { SET_ALERT } from "./alertActions";
-import { getUserId } from "../../services/localStorageService";
+import { getRoleId } from "../../services/localStorageService";
 
 export const GET_CURRENT_USER = "@USR/GET_CURRENT_USER";
 
 export const getCurrentUserAction = () => {
   return (dispatch) => {
     const PATH = isStudent() ? "student" : "professor";
-    const userId = getUserId();
+    const userId = getRoleId();
     axios
       .get(`${BASE_URL}/${PATH}/${userId}`)
       .then((response) => {

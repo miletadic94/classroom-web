@@ -3,6 +3,7 @@ import { SET_ALERT } from "./alertActions";
 import { history } from "../../store";
 import {
   setUserId,
+  setRoleId,
   setUserToken,
   setUserRole,
 } from "../../services/localStorageService";
@@ -13,6 +14,7 @@ export const loginAction = (data) => {
       .post(`${BASE_URL}/login`, JSON.stringify(data))
       .then(({ data }) => {
         setUserId(data.userId);
+        setRoleId(data.user_Id);
         setUserToken(data.token);
         setUserRole(data.userRole);
         history.push("/");

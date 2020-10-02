@@ -18,6 +18,9 @@ import UserProfile from "./screens/UserProfile";
 
 import { getUserToken } from "./services/localStorageService";
 import Alert from "./components/Alert";
+import Subjects from "./screens/Subjects";
+import MySubjects from "./screens/MySubjects";
+import SingleSubject from "./screens/SingleSubject";
 
 const AuthRoute = ({ path, component, exact }) => {
   const token = getUserToken();
@@ -42,6 +45,9 @@ const App = () => {
         <Route path="/reset-password/:tokenId" component={ResetPassword} />
         <AuthRoute path="/" component={Home} exact />
         <AuthRoute path="/user-profile" component={UserProfile} />
+        <AuthRoute path="/subjects" component={Subjects} />
+        <AuthRoute path="/my-subjects" component={MySubjects} />
+        <AuthRoute path="/subject/:id" component={SingleSubject} />
       </Switch>
       <Alert />
     </Router>

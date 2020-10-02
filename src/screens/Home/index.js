@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { getSubjectsAction } from "../../redux/actions/subjectActions";
+import { history } from "../../store";
 
-const Home = () => {
+const Home = ({ getSubjectsAction }) => {
+  const [subjectName, setSubjectName] = useState("");
+
+  const handleSearch = () => {
+    getSubjectsAction(subjectName);
+    history.push("/subjects");
+  };
+
   return (
     <div class="s130">
       <form>
@@ -19,11 +29,13 @@ const Home = () => {
             <input
               id="search"
               type="text"
+              value={subjectName}
+              onChange={(e) => setSubjectName(e.target.value)}
               placeholder="ex. Algebra, Mathematical physics, Logic"
             />
           </div>
           <div class="input-field second-wrap">
-            <button class="btn-search" type="button">
+            <button class="btn-search" type="button" onClick={handleSearch}>
               SEARCH
             </button>
           </div>
@@ -33,4 +45,8 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapDispatchToProps = {
+  getSubjectsAction,
+};
+
+export default connect(null, mapDispatchToProps)(Home);

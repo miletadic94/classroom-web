@@ -9,7 +9,7 @@ const PATH = "/notebook";
 export const getNotebooksAction = () => {
   return (dispatch) => {
     axios
-      .get(`${BASE_URL}/${PATH}`)
+      .get(`${BASE_URL}${PATH}`)
       .then((response) => {
         dispatch({
           type: GET_NOTEBOOKS,
@@ -35,7 +35,7 @@ export const getNotebooksAction = () => {
 export const getNotebookAction = (id) => {
   return (dispatch) => {
     axios
-      .get(`${BASE_URL}/${PATH}/${id}`)
+      .get(`${BASE_URL}${PATH}/${id}`)
       .then((response) => {
         dispatch({
           type: GET_NOTEBOOK,
@@ -61,7 +61,7 @@ export const getNotebookAction = (id) => {
 export const createNotebookAction = (data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/${PATH}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,
@@ -86,7 +86,7 @@ export const createNotebookAction = (data) => {
 export const updateNotebookAction = (id, data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/${PATH}/${id}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,

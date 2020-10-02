@@ -9,7 +9,7 @@ const PATH = "/book";
 export const getBooksAction = () => {
   return (dispatch) => {
     axios
-      .get(`${BASE_URL}/${PATH}`)
+      .get(`${BASE_URL}${PATH}`)
       .then((response) => {
         dispatch({
           type: GET_BOOKS,
@@ -35,7 +35,7 @@ export const getBooksAction = () => {
 export const getBookAction = (id) => {
   return (dispatch) => {
     axios
-      .get(`${BASE_URL}/${PATH}/${id}`)
+      .get(`${BASE_URL}${PATH}/${id}`)
       .then((response) => {
         dispatch({
           type: GET_BOOK,
@@ -61,7 +61,7 @@ export const getBookAction = (id) => {
 export const createBookAction = (data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/${PATH}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,
@@ -86,7 +86,7 @@ export const createBookAction = (data) => {
 export const updateBookAction = (id, data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/${PATH}/${id}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,

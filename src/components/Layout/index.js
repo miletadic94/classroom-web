@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { getCurrentUserAction } from "../../redux/actions/currentUserActions";
-import { logoutAction } from "../../redux/actions/authActions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { getCurrentUserAction } from "../../redux/actions/currentUserActions";
+import { logoutAction } from "../../redux/actions/authActions";
 
 const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
   useEffect(() => {
@@ -12,9 +12,9 @@ const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
   if (!currentUser) return null;
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
+      <Link class="navbar-brand" to="/">
         ClassRoom
-      </a>
+      </Link>
       <button
         class="navbar-toggler"
         type="button"
@@ -35,8 +35,8 @@ const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
             </Link>
           </li>
           <li class="nav-item">
-            <Link class="nav-link" to="/my-courses">
-              My Courses
+            <Link class="nav-link" to="/my-subjects">
+              My Subjects
             </Link>
           </li>
         </ul>

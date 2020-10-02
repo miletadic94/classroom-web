@@ -1,12 +1,18 @@
+import axios, { BASE_URL } from "../../utils/axios";
+import { SET_ALERT } from "./alertActions";
+
 export const GET_SUBJECTS = "@SBJ/GET_SUBJECTS";
 export const GET_SUBJECT = "@SBJ/GET_SUBJECT";
 
-const PATH = "/subjects";
+const PATH = "/subject";
 
-export const getSubjectsAction = () => {
+export const getSubjectsAction = (subjectName) => {
   return (dispatch) => {
+    const URL = `${BASE_URL}${PATH}${
+      subjectName ? `?subjectname=${subjectName}` : "/subjects"
+    }`;
     axios
-      .get(`${BASE_URL}/${PATH}`)
+      .get(URL)
       .then((response) => {
         dispatch({
           type: GET_SUBJECTS,
@@ -32,7 +38,7 @@ export const getSubjectsAction = () => {
 export const getSubjectAction = (id) => {
   return (dispatch) => {
     axios
-      .get(`${BASE_URL}/${PATH}/${id}`)
+      .get(`${BASE_URL}${PATH}/${id}`)
       .then((response) => {
         dispatch({
           type: GET_SUBJECT,
@@ -58,7 +64,7 @@ export const getSubjectAction = (id) => {
 export const createSubjectAction = (data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/${PATH}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,
@@ -83,7 +89,7 @@ export const createSubjectAction = (data) => {
 export const updateSubjectAction = (id, data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/${PATH}/${id}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,

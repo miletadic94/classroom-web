@@ -10,7 +10,7 @@ const PATH = "/student";
 export const getStudentsAction = () => {
   return (dispatch) => {
     axios
-      .get(`${BASE_URL}/${PATH}`)
+      .get(`${BASE_URL}${PATH}`)
       .then((response) => {
         dispatch({
           type: GET_STUDENTS,
@@ -36,7 +36,7 @@ export const getStudentsAction = () => {
 export const getStudentAction = (id) => {
   return (dispatch) => {
     axios
-      .get(`${BASE_URL}/${PATH}/${id}`)
+      .get(`${BASE_URL}${PATH}/${id}`)
       .then((response) => {
         dispatch({
           type: GET_STUDENT,
@@ -62,7 +62,7 @@ export const getStudentAction = (id) => {
 export const createStudentAction = (data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/${PATH}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,
@@ -90,7 +90,7 @@ export const createStudentAction = (data) => {
 export const updateStudentAction = (id, data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/${PATH}/${id}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,
