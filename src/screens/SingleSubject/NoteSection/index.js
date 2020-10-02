@@ -8,7 +8,7 @@ const NoteSection = ({ data }) => {
   return (
     <div>
       <ul onClick={() => setOpen(!open)} class="list-group">
-        <li class="cursor-pointer list-group-item d-flex justify-content-between align-items-center">
+        <li class="cursor-pointer list-group-item d-flex justify-content-between align-items-center bg-blue">
           Notes
           <span class="badge badge-primary badge-pill">{data.length}</span>
         </li>

@@ -1,6 +1,7 @@
 import axios, { BASE_URL } from "../../utils/axios";
 import { SET_ALERT } from "./alertActions";
 import { history } from "../../store";
+import { getSubjectAction } from "./subjectActions";
 
 export const GET_STUDENTS = "@STD/GET_STUDENTS";
 export const GET_STUDENT = "@STD/GET_STUDENT";
@@ -22,7 +23,7 @@ export const getStudentsAction = () => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
         dispatch({
@@ -48,7 +49,7 @@ export const getStudentAction = (id) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
         dispatch({
@@ -67,7 +68,7 @@ export const createStudentAction = (data) => {
         dispatch({
           type: SET_ALERT,
           payload: {
-            title: "SUCCES",
+            title: "SUCCESS",
             message: "Sucessfully Registered!",
           },
         });
@@ -80,7 +81,7 @@ export const createStudentAction = (data) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
       });
@@ -90,12 +91,12 @@ export const createStudentAction = (data) => {
 export const updateStudentAction = (id, data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
+      .put(`${BASE_URL}${PATH}/${id}`, data)
       .then((response) => {
         dispatch({
           type: SET_ALERT,
           payload: {
-            title: "SUCCES",
+            title: "SUCCESS",
             message: "Sucessfully Updated!",
           },
         });
@@ -105,7 +106,33 @@ export const updateStudentAction = (id, data) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
+          },
+        });
+      });
+  };
+};
+
+export const enrollStudentAction = (id) => {
+  return (dispatch) => {
+    axios
+      .post(`${BASE_URL}/enroll/${id}`)
+      .then((response) => {
+        dispatch({
+          type: SET_ALERT,
+          payload: {
+            title: "SUCCESS",
+            message: "Sucessfully Enrolled!",
+          },
+        });
+        window.location.reload();
+      })
+      .catch((error) => {
+        dispatch({
+          type: SET_ALERT,
+          payload: {
+            title: "ERROR",
+            message: error.response.data.message,
           },
         });
       });

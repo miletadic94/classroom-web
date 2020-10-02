@@ -22,7 +22,7 @@ const Alert = ({ alert, closeAlert }) => {
           position: "fixed",
           top: "2em",
           zIndex: 1000,
-          background: "crimson",
+          background: title === "ERROR" ? "crimson" : "yellowgreen",
         }}
       >
         <Header>{title}</Header>

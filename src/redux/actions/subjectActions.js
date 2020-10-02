@@ -8,8 +8,8 @@ const PATH = "/subject";
 
 export const getSubjectsAction = (subjectName) => {
   return (dispatch) => {
-    const URL = `${BASE_URL}${PATH}${
-      subjectName ? `?subjectname=${subjectName}` : "/subjects"
+    const URL = `${BASE_URL}${
+      subjectName ? `${PATH}?subjectname=${subjectName}` : "/subjects"
     }`;
     axios
       .get(URL)
@@ -24,7 +24,7 @@ export const getSubjectsAction = (subjectName) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
         dispatch({
@@ -50,7 +50,7 @@ export const getSubjectAction = (id) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
         dispatch({
@@ -69,7 +69,7 @@ export const createSubjectAction = (data) => {
         dispatch({
           type: SET_ALERT,
           payload: {
-            title: "SUCCES",
+            title: "SUCCESS",
             message: "Sucessfully Created Subject!",
           },
         });
@@ -79,7 +79,7 @@ export const createSubjectAction = (data) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
       });
@@ -89,12 +89,12 @@ export const createSubjectAction = (data) => {
 export const updateSubjectAction = (id, data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
+      .put(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,
           payload: {
-            title: "SUCCES",
+            title: "SUCCESS",
             message: "Sucessfully Updated Subject!",
           },
         });
@@ -104,7 +104,7 @@ export const updateSubjectAction = (id, data) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
       });

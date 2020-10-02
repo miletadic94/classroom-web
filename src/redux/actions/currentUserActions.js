@@ -22,7 +22,7 @@ export const getCurrentUserAction = () => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
         dispatch({

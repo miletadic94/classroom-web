@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getSubjectsAction } from "../../redux/actions/subjectActions";
 
@@ -17,9 +18,13 @@ const MySubjects = ({ getSubjectsAction, subjects }) => {
           <p class="lead">{subject.description}</p>
           <hr class="my-4" />
           <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">
+            <Link
+              class="btn btn-primary btn-lg"
+              to={`/subject/${subject.idsubject}`}
+              role="button"
+            >
               Learn more
-            </a>
+            </Link>
           </p>
         </div>
       ))}

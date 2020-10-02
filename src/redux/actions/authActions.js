@@ -13,8 +13,8 @@ export const loginAction = (data) => {
     axios
       .post(`${BASE_URL}/login`, JSON.stringify(data))
       .then(({ data }) => {
-        setUserId(data.userId);
-        setRoleId(data.user_Id);
+        setUserId(data.user_Id);
+        setRoleId(data.userId);
         setUserToken(data.token);
         setUserRole(data.userRole);
         history.push("/");
@@ -26,7 +26,7 @@ export const loginAction = (data) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
       });

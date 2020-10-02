@@ -43,7 +43,7 @@ const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
         <div className="position-relative mr-5">
           <span
             style={{ color: "white" }}
-            class="nav-link dropdown-toggle"
+            class="cursor-pointer nav-link dropdown-toggle"
             id="navbarDropdown"
             role="button"
             data-toggle="dropdown"

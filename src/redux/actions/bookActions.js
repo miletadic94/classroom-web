@@ -21,7 +21,7 @@ export const getBooksAction = () => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
         dispatch({
@@ -47,7 +47,7 @@ export const getBookAction = (id) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
         dispatch({
@@ -66,7 +66,7 @@ export const createBookAction = (data) => {
         dispatch({
           type: SET_ALERT,
           payload: {
-            title: "SUCCES",
+            title: "SUCCESS",
             message: "Sucessfully Created Book!",
           },
         });
@@ -76,7 +76,7 @@ export const createBookAction = (data) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
       });
@@ -86,12 +86,12 @@ export const createBookAction = (data) => {
 export const updateBookAction = (id, data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
+      .put(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
       .then((response) => {
         dispatch({
           type: SET_ALERT,
           payload: {
-            title: "SUCCES",
+            title: "SUCCESS",
             message: "Sucessfully Updated Book!",
           },
         });
@@ -101,7 +101,7 @@ export const updateBookAction = (id, data) => {
           type: SET_ALERT,
           payload: {
             title: "ERROR",
-            message: error.message,
+            message: error.response.data.message,
           },
         });
       });
