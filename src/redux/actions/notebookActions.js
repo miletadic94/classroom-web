@@ -1,5 +1,6 @@
 import axios, { BASE_URL } from "../../utils/axios";
 import { SET_ALERT } from "./alertActions";
+import { history } from "../../store";
 
 export const GET_NOTEBOOKS = "@NBK/GET_NOTEBOOKS";
 export const GET_NOTEBOOK = "@NBK/GET_NOTEBOOK";
@@ -61,7 +62,7 @@ export const getNotebookAction = (id) => {
 export const createNotebookAction = (data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}${PATH}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}`, data)
       .then((response) => {
         dispatch({
           type: SET_ALERT,
@@ -70,6 +71,7 @@ export const createNotebookAction = (data) => {
             message: "Sucessfully Created Notebook!",
           },
         });
+        history.goBack();
       })
       .catch((error) => {
         dispatch({
@@ -86,7 +88,7 @@ export const createNotebookAction = (data) => {
 export const updateNotebookAction = (id, data) => {
   return (dispatch) => {
     axios
-      .put(`${BASE_URL}${PATH}/${id}`, JSON.stringify(data))
+      .put(`${BASE_URL}${PATH}/${id}`, data)
       .then((response) => {
         dispatch({
           type: SET_ALERT,
@@ -95,6 +97,7 @@ export const updateNotebookAction = (id, data) => {
             message: "Sucessfully Updated Notebook!",
           },
         });
+        history.goBack();
       })
       .catch((error) => {
         dispatch({

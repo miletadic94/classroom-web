@@ -11,7 +11,7 @@ import {
 export const loginAction = (data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}/login`, JSON.stringify(data))
+      .post(`${BASE_URL}/login`, data)
       .then(({ data }) => {
         setUserId(data.user_Id);
         setRoleId(data.userId);

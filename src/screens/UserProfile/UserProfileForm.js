@@ -9,10 +9,12 @@ import {
   maxLength32,
   maxLength128,
 } from "../../utils/validations";
+import { isStudent } from "../../services/localStorageService";
 
 const UserProfileForm = ({ handleSubmit, onSubmit }) => {
+  const studentRole = isStudent();
   return (
-    <form class="user" onSubmit={handleSubmit(onSubmit)}>
+    <form className="user" onSubmit={handleSubmit(onSubmit)}>
       <Field
         name="name"
         type="text"
@@ -28,26 +30,21 @@ const UserProfileForm = ({ handleSubmit, onSubmit }) => {
         validate={[required]}
       />
       <Field
-        name="jmbg"
-        type="text"
-        placeholder="Your ID"
-        component={InputField}
-        validate={[required]}
-      />
-      <Field
         name="address"
         type="text"
         placeholder="Your Address"
         component={InputField}
         validate={[required]}
       />
-      <Field
-        name="phonenumber"
-        type="text"
-        placeholder="Your Phone Number"
-        component={InputField}
-        validate={[required]}
-      />
+      {studentRole && (
+        <Field
+          name="phonenumber"
+          type="text"
+          placeholder="Your Phone Number"
+          component={InputField}
+          validate={[required]}
+        />
+      )}
       <Button type="submit" label="Update" />
     </form>
   );

@@ -11,12 +11,12 @@ const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
 
   if (!currentUser) return null;
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link class="navbar-brand" to="/">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <Link className="navbar-brand" to="/">
         ClassRoom
       </Link>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -24,18 +24,18 @@ const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <Link class="nav-link" to="/">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <Link className="nav-link" to="/">
               Home
             </Link>
           </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/my-subjects">
+          <li className="nav-item">
+            <Link className="nav-link" to="/my-subjects">
               My Subjects
             </Link>
           </li>
@@ -43,7 +43,7 @@ const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
         <div className="position-relative mr-5">
           <span
             style={{ color: "white" }}
-            class="cursor-pointer nav-link dropdown-toggle"
+            className="cursor-pointer nav-link dropdown-toggle"
             id="navbarDropdown"
             role="button"
             data-toggle="dropdown"
@@ -52,12 +52,12 @@ const Layout = ({ getCurrentUserAction, currentUser, logoutAction }) => {
           >
             {currentUser.name} {currentUser.surname}
           </span>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <Link to="/user-profile" class="dropdown-item" href="#">
+          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <Link to="/user-profile" className="dropdown-item" href="#">
               My Profile
             </Link>
-            <div class="dropdown-divider"></div>
-            <span class="dropdown-item" onClick={logoutAction}>
+            <div className="dropdown-divider"></div>
+            <span className="dropdown-item" onClick={logoutAction}>
               Logout
             </span>
           </div>

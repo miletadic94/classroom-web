@@ -1,24 +1,20 @@
 import React from "react";
-import { Label, Form } from "semantic-ui-react";
+import { Label } from "semantic-ui-react";
 
-const InputField = ({
+const TextAraeField = ({
   input,
-  type,
   name,
-  label,
   placeholder,
   meta: { error, warning, touched },
 }) => {
   return (
     <div className="form-group">
-      {label && <label htmlFor={name}>{label}</label>}
-      <input
+      <textarea
+        style={{ width: "100%" }}
         {...input}
-        id={name}
         name={name}
-        type={type}
         placeholder={placeholder}
-        className="form-control form-control-user"
+        rows={5}
       />
       {touched && error && (
         <Label basic color="red" pointing>
@@ -29,4 +25,4 @@ const InputField = ({
   );
 };
 
-export default InputField;
+export default TextAraeField;

@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
-import LoginForm from "./LoginForm";
-import { loginAction } from "../../../redux/actions/authActions";
+import NotebookForm from "./NotebookForm";
+import { createNotebookAction } from "../../../redux/actions/notebookActions";
 
-const Login = ({ loginAction }) => {
+const CreateNotebook = ({ createNotebookAction, match }) => {
   const handleSubmit = (data) => {
-    loginAction(data);
+    createNotebookAction({ ...data, idsubject: match.params.subjectId });
   };
   return (
     <div className="container">
@@ -16,19 +15,16 @@ const Login = ({ loginAction }) => {
           <div className="card o-hidden border-0 shadow-lg my-5">
             <div className="card-body p-0">
               <div className="row align-items-center">
-                <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                <div className="col-lg-6 d-none d-lg-block bg-notebook-image"></div>
                 <div className="col-lg-6">
                   <div className="p-5">
                     <div className="text-center">
-                      <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                      <h1 className="h4 text-gray-900 mb-4">
+                        Create Notebook!
+                      </h1>
                     </div>
                     <hr />
-                    <LoginForm onSubmit={handleSubmit} />
-                    <div className="text-center">
-                      <Link className="small" to="/register">
-                        Create an Account!
-                      </Link>
-                    </div>
+                    <NotebookForm onSubmit={handleSubmit} />
                   </div>
                 </div>
               </div>
@@ -40,10 +36,8 @@ const Login = ({ loginAction }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
-
 const mapDispatchToProps = {
-  loginAction,
+  createNotebookAction,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(CreateNotebook);

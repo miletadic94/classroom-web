@@ -1,11 +1,14 @@
 import React, { useState, Fragment } from "react";
 import BookModal from "./BookModal";
+import { isStudent } from "../../../services/localStorageService";
 
 const NoteBookSection = ({ title, data }) => {
   const [open, setOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState(0);
 
   if (!data) return null;
+
+  const studentRole = isStudent();
 
   const handleSelectBook = (event, book) => {
     event.stopPropagation();
@@ -19,19 +22,20 @@ const NoteBookSection = ({ title, data }) => {
           setOpen(!open);
           setSelectedBook(null);
         }}
-        class="list-group"
+        className="list-group"
       >
-        <li class="cursor-pointer list-group-item d-flex justify-content-between align-items-center bg-blue">
+        <li className="cursor-pointer list-group-item d-flex justify-content-between align-items-center bg-blue">
           {title}
-          <span class="badge badge-primary badge-pill">{data.length}</span>
+          <span className="badge badge-primary badge-pill">{data.length}</span>
         </li>
-        <ul class="list-group list-group-flush">
+        <ul className="list-group list-group-flush">
           {open &&
             data.length > 0 &&
             data.map((item) => (
               <Fragment>
                 <BookModal
                   id={item.idnotebook || item.idbook}
+                  isNotebook={!!item.idnotebook}
                   book={selectedBook}
                   handleClose={() => setSelectedBook(null)}
                 />
@@ -40,7 +44,7 @@ const NoteBookSection = ({ title, data }) => {
                   data-toggle="modal"
                   data-target={`#modal_id${item.idnotebook || item.idbook}`}
                   data-whatever="@getbootstrap"
-                  class="cursor-pointer list-group-item"
+                  className="cursor-pointer list-group-item"
                 >
                   {item.name}
                 </li>

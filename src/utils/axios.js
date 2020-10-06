@@ -12,7 +12,6 @@ axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
 const token = getUserToken();
 if (token) {
-  console.log("token", token);
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 }
 

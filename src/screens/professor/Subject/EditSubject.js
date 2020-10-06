@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
-import LoginForm from "./LoginForm";
-import { loginAction } from "../../../redux/actions/authActions";
+import SubjectForm from "./SubjectForm";
+import {
+  getSubjectAction,
+  updateSubjectAction,
+} from "../../../redux/actions/subjectActions";
 
-const Login = ({ loginAction }) => {
+const EditSubject = ({
+  initialValues,
+  getSubjectAction,
+  updateSubjectAction,
+  match,
+}) => {
+  useEffect(() => {
+    getSubjectAction(match.params.id);
+  }, []);
+
   const handleSubmit = (data) => {
-    loginAction(data);
+    updateSubjectAction(match.params.id, data);
   };
   return (
     <div className="container">
@@ -20,15 +31,13 @@ const Login = ({ loginAction }) => {
                 <div className="col-lg-6">
                   <div className="p-5">
                     <div className="text-center">
-                      <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                      <h1 className="h4 text-gray-900 mb-4">Edit Subject!</h1>
                     </div>
                     <hr />
-                    <LoginForm onSubmit={handleSubmit} />
-                    <div className="text-center">
-                      <Link className="small" to="/register">
-                        Create an Account!
-                      </Link>
-                    </div>
+                    <SubjectForm
+                      onSubmit={handleSubmit}
+                      initialValues={initialValues}
+                    />
                   </div>
                 </div>
               </div>
@@ -40,10 +49,13 @@ const Login = ({ loginAction }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  initialValues: state?.subject?.Subject,
+});
 
 const mapDispatchToProps = {
-  loginAction,
+  getSubjectAction,
+  updateSubjectAction,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(EditSubject);

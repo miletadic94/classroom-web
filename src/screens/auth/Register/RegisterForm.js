@@ -12,7 +12,7 @@ import {
 
 const RegisterForm = ({ handleSubmit, onSubmit }) => {
   return (
-    <form class="user" onSubmit={handleSubmit(onSubmit)}>
+    <form className="user" onSubmit={handleSubmit(onSubmit)}>
       <Field
         name="name"
         type="text"

@@ -63,7 +63,7 @@ export const getStudentAction = (id) => {
 export const createStudentAction = (data) => {
   return (dispatch) => {
     axios
-      .post(`${BASE_URL}${PATH}`, JSON.stringify(data))
+      .post(`${BASE_URL}${PATH}`, data)
       .then((response) => {
         dispatch({
           type: SET_ALERT,

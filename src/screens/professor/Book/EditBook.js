@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
-import LoginForm from "./LoginForm";
-import { loginAction } from "../../../redux/actions/authActions";
+import BookForm from "./BookForm";
+import {
+  getBookAction,
+  updateBookAction,
+} from "../../../redux/actions/bookActions";
 
-const Login = ({ loginAction }) => {
+const EditBook = ({
+  initialValues,
+  getBookAction,
+  updateBookAction,
+  match,
+}) => {
+  useEffect(() => {
+    getBookAction(match.params.id);
+  }, []);
+
   const handleSubmit = (data) => {
-    loginAction(data);
+    updateBookAction(match.params.id, {
+      ...data,
+      idsubject: match.params.subjectId,
+    });
   };
   return (
     <div className="container">
@@ -20,15 +34,13 @@ const Login = ({ loginAction }) => {
                 <div className="col-lg-6">
                   <div className="p-5">
                     <div className="text-center">
-                      <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                      <h1 className="h4 text-gray-900 mb-4">Edit Book!</h1>
                     </div>
                     <hr />
-                    <LoginForm onSubmit={handleSubmit} />
-                    <div className="text-center">
-                      <Link className="small" to="/register">
-                        Create an Account!
-                      </Link>
-                    </div>
+                    <BookForm
+                      onSubmit={handleSubmit}
+                      initialValues={initialValues}
+                    />
                   </div>
                 </div>
               </div>
@@ -40,10 +52,13 @@ const Login = ({ loginAction }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  initialValues: state.book,
+});
 
 const mapDispatchToProps = {
-  loginAction,
+  getBookAction,
+  updateBookAction,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(EditBook);

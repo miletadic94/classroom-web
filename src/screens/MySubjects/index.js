@@ -13,13 +13,13 @@ const MySubjects = ({ getSubjectsAction, subjects }) => {
   return (
     <Fragment>
       {subjects.map((subject) => (
-        <div class="jumbotron">
-          <h1 class="display-4">{subject.subjectname}</h1>
-          <p class="lead">{subject.description}</p>
-          <hr class="my-4" />
-          <p class="lead">
+        <div className="jumbotron">
+          <h1 className="display-4">{subject.subjectname}</h1>
+          <p className="lead">{subject.description}</p>
+          <hr className="my-4" />
+          <p className="lead">
             <Link
-              class="btn btn-primary btn-lg"
+              className="btn btn-primary btn-lg"
               to={`/subject/${subject.idsubject}`}
               role="button"
             >

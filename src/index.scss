@@ -39,6 +39,34 @@ code {
   height: 70vh;
 }
 
+.bg-subject-image {
+  background: url("https://www.umultirank.org/export/sites/default/.galleries/generic-images/University-Generic/University-Rankings-By-Subject.png_607451959.png");
+  background-position: center;
+  background-size: cover;
+  height: 70vh;
+}
+
+.bg-notebook-image {
+  background: url("https://cdn.vox-cdn.com/thumbor/kqAcJkIFdaj_0XKMYHSSz8BXGpI=/0x0:4896x3264/1400x1050/filters:focal(2057x1241:2839x2023):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/64715574/GettyImages_577660404.0.jpg");
+  background-position: left;
+  background-size: cover;
+  height: 70vh;
+}
+
+.bg-note-image {
+  background: url("https://i.pinimg.com/originals/99/0e/f3/990ef31e72472a7d31d1eda516f0ee72.jpg");
+  background-position: left;
+  background-size: cover;
+  height: 70vh;
+}
+
+.bg-student-image {
+  background: url("https://dfw.cbslocal.com/wp-content/uploads/sites/15909545/2020/04/grading-2.jpg?w=1381");
+  background-position: center;
+  background-size: cover;
+  height: 70vh;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
